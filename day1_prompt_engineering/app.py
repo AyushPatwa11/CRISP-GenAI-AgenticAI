@@ -26,7 +26,20 @@ def load_prompts():
 
 prompts = load_prompts()
 
-# Sidebar controls
+# Sidebar Configuration
+st.sidebar.header("⚙️ Model & API Settings")
+
+provider = st.sidebar.radio("Select Provider", ["Groq", "OpenAI"])
+if provider == "Groq":
+    model_name = st.sidebar.selectbox("Model", ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "gemma2-9b-it"])
+    default_key = os.getenv("GROQ_API_KEY", "")
+else:
+    model_name = st.sidebar.selectbox("Model", ["gpt-4o-mini", "gpt-4o"])
+    default_key = os.getenv("OPENAI_API_KEY", "")
+
+api_key = st.sidebar.text_input("API Key", value=default_key, type="password", help="Enter your Groq or OpenAI API Key here")
+
+st.sidebar.divider()
 st.sidebar.header("🎯 Prompt Navigator")
 categories = ["All", "Zero-shot", "Few-shot", "Chain-of-Thought", "Role Prompting"]
 selected_category = st.sidebar.selectbox("Filter by Category", categories)
@@ -68,24 +81,21 @@ st.divider()
 st.subheader("🧪 Live Interactive Execution & Comparison")
 user_custom_input = st.text_area("Input Text / Context", value=item["input_text"], height=100)
 
-api_key = os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY")
-
 if st.button("🚀 Execute Engineered Prompt Live", type="primary"):
-    if not api_key:
-        st.warning("⚠️ No API key found in environment (`GROQ_API_KEY` or `OPENAI_API_KEY`). Showing benchmark result above.")
-        st.info("To run live, add your `GROQ_API_KEY` to the `.env` file.")
+    if not api_key.strip():
+        st.warning("⚠️ Please enter your API Key in the sidebar on the left.")
     else:
         try:
-            from langchain_groq import ChatGroq
-            from langchain_openai import ChatOpenAI
-            
             with st.spinner("Generating live response..."):
-                if os.getenv("GROQ_API_KEY"):
-                    llm = ChatGroq(model_name="llama-3.3-70b-versatile", temperature=0.2)
+                if provider == "Groq":
+                    from langchain_groq import ChatGroq
+                    llm = ChatGroq(groq_api_key=api_key, model_name=model_name, temperature=0.2)
                 else:
-                    llm = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.2)
+                    from langchain_openai import ChatOpenAI
+                    llm = ChatOpenAI(openai_api_key=api_key, model_name=model_name, temperature=0.2)
                 
-                response = llm.invoke(item["engineered_prompt"].replace(item["input_text"], user_custom_input))
+                prompt_to_send = item["engineered_prompt"].replace(item["input_text"], user_custom_input)
+                response = llm.invoke(prompt_to_send)
                 st.markdown("### 🌟 Live Execution Result")
                 st.write(response.content)
         except Exception as e:
