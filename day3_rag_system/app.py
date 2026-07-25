@@ -53,28 +53,32 @@ uploaded_files = st.sidebar.file_uploader(
 
 use_sample_doc = st.sidebar.button("📄 Load Sample CRISP Handbook Document")
 
-temp_files_to_process = []
+if "temp_files_to_process" not in st.session_state:
+    st.session_state.temp_files_to_process = []
 
 if use_sample_doc:
     sample_path = os.path.join(os.path.dirname(__file__), "sample_docs", "ai_handbook_summary.txt")
     if os.path.exists(sample_path):
-        temp_files_to_process.append(sample_path)
+        st.session_state.temp_files_to_process = [sample_path]
 
 if uploaded_files:
+    uploaded_paths = []
     for file in uploaded_files:
         temp_dir = tempfile.gettempdir()
         temp_path = os.path.join(temp_dir, file.name)
         with open(temp_path, "wb") as f:
             f.write(file.read())
-        temp_files_to_process.append(temp_path)
+        uploaded_paths.append(temp_path)
+    st.session_state.temp_files_to_process = uploaded_paths
 
-if temp_files_to_process:
+if st.session_state.temp_files_to_process:
+    st.sidebar.info(f"📄 Ready to index {len(st.session_state.temp_files_to_process)} document(s).")
     if st.sidebar.button("⚡ Index Documents in ChromaDB", type="primary"):
         with st.spinner("Processing & embedding documents into ChromaDB..."):
             try:
                 st.session_state.rag_engine.chunk_size = chunk_size
                 st.session_state.rag_engine.chunk_overlap = chunk_overlap
-                num_docs, num_chunks = st.session_state.rag_engine.process_documents(temp_files_to_process)
+                num_docs, num_chunks = st.session_state.rag_engine.process_documents(st.session_state.temp_files_to_process)
                 st.session_state.indexed = True
                 st.sidebar.success(f"Indexed {num_docs} document(s) into {num_chunks} vector chunks!")
             except Exception as e:
