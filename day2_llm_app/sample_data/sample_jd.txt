@@ -1,0 +1,12 @@
+Job Title: Senior AI & LLM Systems Engineer
+Company: CloudAI Labs
+
+Role Description:
+We are seeking an AI Engineer to design and deploy agentic AI workflows, retrieval-augmented generation (RAG) systems, and LLM microservices.
+
+Key Requirements:
+- 3+ years experience with Python, LangChain/LangGraph, and LLM APIs (Groq, OpenAI).
+- Solid experience with Vector Databases (ChromaDB, Pinecone, or Qdrant).
+- Strong background in Agentic AI architecture (ReAct framework, Memory, Tool Calling).
+- Experience deploying Streamlit/FastAPI applications to cloud environments (AWS/Docker).
+- Excellent written communication and prompt engineering skills.

@@ -1,0 +1,25 @@
+Ayush Sharma
+Data Scientist & AI Engineer
+Email: ayush@example.com | Location: Bhilai, CG
+
+SUMMARY
+Enthusiastic Data Scientist with 2+ years experience building machine learning models, REST APIs with FastAPI, Python scripting, and data pipelines. Proficient in SQL, Pandas, Scikit-Learn, and basic NLP.
+
+SKILLS
+- Programming: Python, SQL, Bash
+- Machine Learning: Scikit-learn, XGBoost, Pandas, NumPy
+- Web & APIs: FastAPI, Flask, Streamlit
+- Vector DBs & Tools: Git, Docker, SQLite
+
+EXPERIENCE
+Junior AI Developer | DataTech Solutions (2024 - Present)
+- Developed automated text classification pipeline saving 15 hours weekly.
+- Built interactive Streamlit dashboards for sales analytics.
+- Fine-tuned Scikit-Learn classifiers achieving 91% accuracy.
+
+PROJECTS
+- Customer Churn Predictor: Built XGBoost model deployed via FastAPI on render.
+- RAG Document Search: Integrated LangChain with ChromaDB for internal QA system.
+
+EDUCATION
+B.Tech in Computer Science & Engineering | Rungta Engineering College (2020-2024)
