@@ -1,0 +1,20 @@
+CRISP Generative & Agentic AI Program Handbook
+
+Overview:
+The CRISP Generative & Agentic AI Bootcamp is a 7-day intensive hands-on workshop conducted at Rungta Engineering College, Bhilai, trained by Somil Jain.
+
+Curriculum Structure:
+- Day 1: Master Prompt Engineering (20 prompts across Zero-shot, Few-shot, Chain-of-Thought, and Role prompting).
+- Day 2: Build Streamlit LLM Applications with Groq/OpenAI APIs.
+- Day 3: Develop Retrieval-Augmented Generation (RAG) systems using LangChain, Vector DBs (ChromaDB), and embeddings.
+- Day 4: Create Autonomous Agentic AI workflows with ReAct framework, memory, tools, and planning.
+- Day 5: Integrate real-world external tools (Weather API, Serper search, Calendar/Email, MCP tools).
+- Day 6: Build domain-specific Industry Solutions for Healthcare, Education, Finance, or Manufacturing.
+- Day 7: Capstone Deployment, Portfolio documentation, Viva Voce prep, and final presentation.
+
+Assessment Criteria (100 Total Marks):
+- Daily Assignments: 20 Marks
+- Capstone Project: 20 Marks
+- MCQ Test: 20 Marks
+- Coding Challenge: 20 Marks
+- Viva & Demo: 20 Marks
