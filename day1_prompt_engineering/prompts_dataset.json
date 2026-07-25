@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "category": "Zero-shot",
+    "title": "Customer Sentiment Analysis",
+    "description": "Classifies customer feedback directly without prior examples.",
+    "input_text": "The delivery was delayed by 3 days, but the support team was super helpful and resolved my issue immediately.",
+    "naive_prompt": "Is this positive or negative?",
+    "engineered_prompt": "Analyze the customer review below. Return JSON format with fields: 'overall_sentiment' (Positive/Negative/Mixed), 'aspects' (key-value pairs of aspect and sentiment), and 'confidence_score' (0.0 to 1.0).\nReview: \"The delivery was delayed by 3 days, but the support team was super helpful and resolved my issue immediately.\"",
+    "before_output": "It's mixed.",
+    "after_output": "{\n  \"overall_sentiment\": \"Mixed\",\n  \"aspects\": {\n    \"delivery\": \"Negative\",\n    \"customer_support\": \"Positive\"\n  },\n  \"confidence_score\": 0.95\n}"
+  },
+  {
+    "id": 2,
+    "category": "Zero-shot",
+    "title": "Technical Error Log Summarizer",
+    "description": "Extracts root causes from stack traces without prior examples.",
+    "input_text": "ConnectionRefusedError: [Errno 111] Connection refused at postgresql://user:***@localhost:5432/main_db. Retried 3 times.",
+    "naive_prompt": "Fix this error.",
+    "engineered_prompt": "Act as a Senior DevOps Engineer. Examine the error log below and provide:\n1. Root Cause Summary (1 sentence)\n2. Key Affected Service\n3. 3 Step Troubleshooting Checklist.\nLog: \"ConnectionRefusedError: [Errno 111] Connection refused at postgresql://user:***@localhost:5432/main_db. Retried 3 times.\"",
+    "before_output": "Your database server is down. Try restarting it.",
+    "after_output": "1. Root Cause Summary: The application failed to establish a TCP connection to PostgreSQL on localhost port 5432.\n2. Key Affected Service: PostgreSQL Database / Application Data Layer\n3. Troubleshooting Checklist:\n   - Check if PostgreSQL service is active (`systemctl status postgresql`).\n   - Verify database configuration port 5432 is listening (`netstat -tuln | grep 5432`).\n   - Confirm firewall rules allow traffic on port 5432."
+  },
+  {
+    "id": 3,
+    "category": "Zero-shot",
+    "title": "Email Subject Line Generator",
+    "description": "Generates high open-rate email subject lines with tone control.",
+    "input_text": "Announcing our new AI feature: automatic meeting transcript summarization with action item extraction.",
+    "naive_prompt": "Give me email titles for this feature.",
+    "engineered_prompt": "Generate 3 high-converting email subject lines for the feature announcement below. Rules:\n- Under 50 characters\n- Include 1 emoji per line\n- Tone: Professional yet intriguing\nFeature: \"Announcing our new AI feature: automatic meeting transcript summarization with action item extraction.\"",
+    "before_output": "New AI Feature Announcement\nMeeting Summaries Now Live\nAutomatic Meeting Summarizer",
+    "after_output": "1. ⚡ Never take meeting notes again!\n2. 🎯 Instant AI meeting summaries are here\n3. 🚀 Turn 1-hour calls into 1-min summaries"
+  },
+  {
+    "id": 4,
+    "category": "Zero-shot",
+    "title": "SQL Query Builder from Natural Language",
+    "description": "Converts plain text request into safe SQL code.",
+    "input_text": "Find top 5 customers who spent the most in 2025.",
+    "naive_prompt": "Write SQL for top customers in 2025.",
+    "engineered_prompt": "Write an ANSI SQL query for the following request. Table schema: `orders` (`order_id`, `customer_id`, `total_amount`, `order_date`).\nConstraint: Include comments explaining group by and order by clauses.\nRequest: \"Find top 5 customers who spent the most in 2025.\"",
+    "before_output": "SELECT customer_id FROM orders WHERE year=2025 LIMIT 5;",
+    "after_output": "-- Query to aggregate total spend per customer in 2025 and retrieve top 5\nSELECT \n    customer_id,\n    SUM(total_amount) AS total_spent\nFROM orders\nWHERE order_date >= '2025-01-01' AND order_date <= '2025-12-31'\nGROUP BY customer_id\nORDER BY total_spent DESC\nLIMIT 5;"
+  },
+  {
+    "id": 5,
+    "category": "Zero-shot",
+    "title": "Language Tone Transformer",
+    "description": "Transforms casual text into executive corporate tone.",
+    "input_text": "Hey team, we messed up the release date, we need to push it back a week.",
+    "naive_prompt": "Make this email sound professional.",
+    "engineered_prompt": "Rewrite the following message into polished executive communication for stakeholders. Maintain honesty while projecting confidence and structured project management.\nMessage: \"Hey team, we messed up the release date, we need to push it back a week.\"",
+    "before_output": "Dear Team, We made a mistake on the release date and need to delay it by one week. Regard.",
+    "after_output": "Dear Stakeholders,\n\nTo ensure our upcoming release meets the highest quality and stability standards, we are realigning our launch timeline by one week. This additional buffer allows us to complete rigorous final validation. We appreciate your continued support and look forward to delivering a seamless product update."
+  },
+  {
+    "id": 6,
+    "category": "Few-shot",
+    "title": "Medical Term Simplifier",
+    "description": "Translates complex clinical terminology into patient-friendly language using examples.",
+    "input_text": "Patient exhibits acute dyspnea secondary to bronchospasm with bilateral wheezing.",
+    "naive_prompt": "Explain this medical text simply.",
+    "engineered_prompt": "Translate medical terms into 6th-grade reading level patient explanations following the examples below:\n\nExample 1:\nInput: Patient presents with idiopathic hypertension.\nOutput: The patient has high blood pressure with no clear single cause.\n\nExample 2:\nInput: Myocardial infarction indicated by elevated troponin.\nOutput: The patient had a heart attack, confirmed by blood tests.\n\nNow translate:\nInput: \"Patient exhibits acute dyspnea secondary to bronchospasm with bilateral wheezing.\"",
+    "before_output": "The patient has dyspnea and bronchospasm with wheezing on both sides.",
+    "after_output": "The patient is experiencing sudden shortness of breath caused by tightening of the airways, creating a whistling sound when breathing."
+  },
+  {
+    "id": 7,
+    "category": "Few-shot",
+    "title": "Product Feature Extractor",
+    "description": "Extracts structured specifications from unformatted text using few-shot formatting.",
+    "input_text": "The UltraSound X-500 comes with 32GB RAM, 1TB SSD, 15.6 inch OLED 120Hz display, weighing 1.4kg at $1,299.",
+    "naive_prompt": "Extract features from this specs text.",
+    "engineered_prompt": "Extract product details into valid JSON format using the example schema:\n\nExample:\nInput: Phone Pro 12 has 128GB storage, 6.1-inch screen, 4000mAh battery for $799.\nOutput: {\"product\": \"Phone Pro 12\", \"storage\": \"128GB\", \"screen\": \"6.1-inch\", \"battery\": \"4000mAh\", \"price\": \"$799\"}\n\nInput: \"The UltraSound X-500 comes with 32GB RAM, 1TB SSD, 15.6 inch OLED 120Hz display, weighing 1.4kg at $1,299.\"",
+    "before_output": "RAM: 32GB, SSD: 1TB, Screen: 15.6 inch OLED 120Hz, Weight: 1.4kg, Price: $1299",
+    "after_output": "{\n  \"product\": \"UltraSound X-500\",\n  \"ram\": \"32GB\",\n  \"storage\": \"1TB SSD\",\n  \"display\": \"15.6 inch OLED 120Hz\",\n  \"weight\": \"1.4kg\",\n  \"price\": \"$1,299\"\n}"
+  },
+  {
+    "id": 8,
+    "category": "Few-shot",
+    "title": "Code Bug Fixer & Explainer",
+    "description": "Demonstrates bug detection patterns with paired examples.",
+    "input_text": "def calc_avg(vals):\n    return sum(vals)/len(vals)",
+    "naive_prompt": "Fix code bugs.",
+    "engineered_prompt": "Identify runtime bugs and rewrite code safely following the pattern below:\n\nExample:\nCode: `val = data['key']`\nBug: Raises KeyError if 'key' is missing.\nFix: `val = data.get('key', None)`\n\nCode to analyze:\n```python\ndef calc_avg(vals):\n    return sum(vals)/len(vals)\n```",
+    "before_output": "The code looks okay for normal lists.",
+    "after_output": "Bug: Raises `ZeroDivisionError` if `vals` is empty.\nFix:\n```python\ndef calc_avg(vals):\n    if not vals:\n        return 0.0\n    return sum(vals) / len(vals)\n```"
+  },
+  {
+    "id": 9,
+    "category": "Few-shot",
+    "title": "Entity Normalizer (Address parsing)",
+    "description": "Standardizes unstructured address data using few-shot guidance.",
+    "input_text": "apt 4b 120 main st, bhilai, cg 490006 india",
+    "naive_prompt": "Clean this address.",
+    "engineered_prompt": "Normalize addresses into standardized fields:\n\nInput: flat 12, park avenue, mumbai, mh 400001\nOutput: Street: Park Avenue | Unit: Flat 12 | City: Mumbai | State: MH | Pincode: 400001\n\nInput: \"apt 4b 120 main st, bhilai, cg 490006 india\"",
+    "before_output": "Apt 4B, 120 Main St, Bhilai, CG 490006, India",
+    "after_output": "Street: 120 Main St | Unit: Apt 4B | City: Bhilai | State: CG | Pincode: 490006 | Country: India"
+  },
+  {
+    "id": 10,
+    "category": "Few-shot",
+    "title": "Support Ticket Urgency Classifier",
+    "description": "Categorizes support tickets with priority labels based on examples.",
+    "input_text": "Our payment portal is completely failing for all users during checkout!",
+    "naive_prompt": "Classify priority.",
+    "engineered_prompt": "Classify support ticket priority (P1 - Critical, P2 - High, P3 - Low):\n\nExample 1: \"Typo on the contact us page.\"\nPriority: P3 - Low\n\nExample 2: \"Reports are loading slowly for 2 users.\"\nPriority: P2 - High\n\nInput: \"Our payment portal is completely failing for all users during checkout!\"",
+    "before_output": "Priority: Urgent",
+    "after_output": "Priority: P1 - Critical (Reason: Outage affecting revenue-critical payment checkout service for all users)."
+  },
+  {
+    "id": 11,
+    "category": "Chain-of-Thought",
+    "title": "Complex Math Word Problem",
+    "description": "Forces step-by-step reasoning for multi-step arithmetic.",
+    "input_text": "A shop sells apples for $2 each. If you buy 5 or more, you get a 20% discount. Alice buys 7 apples and pays with a $20 bill. How much change does she get?",
+    "naive_prompt": "How much change does Alice get?",
+    "engineered_prompt": "Solve the word problem step-by-step using Chain of Thought reasoning. Show your calculation steps clearly before stating the final answer.\nProblem: \"A shop sells apples for $2 each. If you buy 5 or more, you get a 20% discount. Alice buys 7 apples and pays with a $20 bill. How much change does she get?\"",
+    "before_output": "Alice gets $8.80 change.",
+    "after_output": "Let's solve this step by step:\n1. Regular cost per apple = $2.00.\n2. Number of apples bought = 7.\n3. Base total cost without discount = 7 * $2 = $14.00.\n4. Check discount eligibility: 7 >= 5, so a 20% discount applies.\n5. Discount amount = 20% of $14 = 0.20 * 14 = $2.80.\n6. Final discounted total = $14.00 - $2.80 = $11.20.\n7. Change from a $20 bill = $20.00 - $11.20 = $8.80.\n\nFinal Answer: Alice gets $8.80 in change."
+  },
+  {
+    "id": 12,
+    "category": "Chain-of-Thought",
+    "title": "Logical Puzzle & Deduction",
+    "description": "Solves multi-constraint logical puzzles with explicit intermediate steps.",
+    "input_text": "Alice, Bob, and Charlie live in Red, Blue, and Green houses. Alice does not live in Red. Charlie lives in Green. Which color house does Bob live in?",
+    "naive_prompt": "Which house is Bob's?",
+    "engineered_prompt": "Solve this riddle by showing explicit logical deductions step-by-step.\nProblem: \"Alice, Bob, and Charlie live in Red, Blue, and Green houses. Alice does not live in Red. Charlie lives in Green. Which color house does Bob live in?\"",
+    "before_output": "Bob lives in the Red house.",
+    "after_output": "Step-by-step logical breakdown:\n1. Given colors available: Red, Blue, Green.\n2. Fact 1: Charlie lives in the Green house. (Remaining colors: Red, Blue).\n3. Fact 2: Alice does not live in Red. Since Green is taken by Charlie, Alice MUST live in Blue.\n4. Deduction: With Blue taken by Alice and Green taken by Charlie, the only remaining house color for Bob is Red.\n\nConclusion: Bob lives in the Red house."
+  },
+  {
+    "id": 13,
+    "category": "Chain-of-Thought",
+    "title": "Root Cause Analysis of Server Outage",
+    "description": "Analyzes complex cascading failures step-by-step.",
+    "input_text": "CPU spikes to 100% -> DB pool exhausted -> 504 Gateway Timeout on user requests.",
+    "naive_prompt": "Why did we get 504 timeouts?",
+    "engineered_prompt": "Perform a step-by-step Root Cause Analysis (RCA) tracing cause and effect for the incident sequence: \"CPU spikes to 100% -> DB pool exhausted -> 504 Gateway Timeout on user requests.\"",
+    "before_output": "Because the server timed out.",
+    "after_output": "Chain of Events Analysis:\n1. Initial Trigger: CPU usage spiked to 100%, causing processing bottlenecks.\n2. Cascading Effect 1: High CPU load stalled database connection releases, causing active DB connections to hit pool capacity.\n3. Cascading Effect 2: Incoming web requests queued waiting for free DB connections until proxy timeout threshold (504 Gateway Timeout) was breached.\n4. Primary Mitigation: Scale web container CPU capacity and optimize DB connection timeout/pooling configurations."
+  },
+  {
+    "id": 14,
+    "category": "Chain-of-Thought",
+    "title": "Financial ROI & Payback Calculation",
+    "description": "Calculates business metrics step-by-step.",
+    "input_text": "Software cost: $12,000/year. Saves 15 engineer hours per month at $50/hour rate.",
+    "naive_prompt": "Is this software worth buying?",
+    "engineered_prompt": "Calculate financial ROI and payback period step-by-step.\nData: \"Software cost: $12,000/year. Saves 15 engineer hours per month at $50/hour rate.\"",
+    "before_output": "No, it loses money.",
+    "after_output": "Step 1: Calculate monthly labor savings = 15 hours * $50/hour = $750/month.\nStep 2: Calculate annual savings = $750 * 12 months = $9,000/year.\nStep 3: Calculate Net Annual Cash Flow = $9,000 savings - $12,000 cost = -$3,000.\nStep 4: ROI Calculation = (Savings - Cost) / Cost = ($9,000 - $12,000) / $12,000 = -25%.\n\nRecommendation: Financially non-viable under current operational metrics unless engineer time saved exceeds 20 hours/month."
+  },
+  {
+    "id": 15,
+    "category": "Chain-of-Thought",
+    "title": "Code Refactoring Safety Check",
+    "description": "Evaluates refactoring steps and potential side effects.",
+    "input_text": "Replacing a synchronous loop of 100 REST API calls with asyncio.gather().",
+    "naive_prompt": "Is switching to asyncio fine?",
+    "engineered_prompt": "Evaluate switching from synchronous looping to `asyncio.gather()` step-by-step. Identify performance gains, risk factors, and safety measures.",
+    "before_output": "Yes, async is much faster.",
+    "after_output": "Step-by-step evaluation:\n1. Performance Impact: Execution time drops from O(N * latency) to max(latency), yielding ~10-20x speedup.\n2. Risk 1 (Rate Limiting): Sending 100 simultaneous requests may trigger 429 Too Many Requests from the API endpoint.\n3. Risk 2 (Resource Exhaustion): Opening 100 concurrent sockets simultaneously may exceed file descriptor limits.\n4. Recommended Safeguard: Wrap coroutines in `asyncio.Semaphore(10)` to throttle concurrency to 10 parallel requests max."
+  },
+  {
+    "id": 16,
+    "category": "Role Prompting",
+    "title": "Senior Code Reviewer",
+    "description": "Adopts the persona of a principal engineer conducting a code review.",
+    "input_text": "def get_user(id):\n    res = db.execute(f'SELECT * FROM users WHERE id = {id}')\n    return res.fetchone()",
+    "naive_prompt": "Review this code.",
+    "engineered_prompt": "You are a Principal Security Engineer and Tech Lead. Review the Python snippet below. Provide:\n1. Critical Security Vulnerability\n2. Performance & Code Quality Issues\n3. Production-Ready Refactored Code\nSnippet: \"def get_user(id): res = db.execute(f'SELECT * FROM users WHERE id = {id}'); return res.fetchone()\"",
+    "before_output": "The code works fine to get a user by ID.",
+    "after_output": "🛡️ Security Code Review:\n\n1. CRITICAL VULNERABILITY (SQL Injection): String f-string formatting direct into SQL allows arbitrary SQL injection attack vector.\n2. QUALITY ISSUE: Select * retrieves all columns needlessly, and lack of type annotations.\n\n3. PRODUCTION REFACTORED CODE:\n```python
+def get_user_by_id(user_id: int) -> dict | None:
+    query = 'SELECT id, username, email FROM users WHERE id = :id'
+    result = db.execute(query, {'id': user_id})
+    return result.fetchone()
+```"
+  },
+  {
+    "id": 17,
+    "category": "Role Prompting",
+    "title": "Socratic AI Tutor",
+    "description": "Guides students through learning concepts via guided questions rather than giving answers directly.",
+    "input_text": "What is a vector database?",
+    "naive_prompt": "Explain vector databases.",
+    "engineered_prompt": "You are a Socratic AI Computer Science Professor. Do NOT give direct textbook definitions immediately. Instead, explain the concept using a real-world library catalog analogy, and end with a thought-provoking question for the student.",
+    "before_output": "A vector database is a database designed to store and query high-dimensional vector embeddings efficiently using algorithms like HNSW.",
+    "after_output": "Imagine walking into a massive library where books aren't arranged by title or author, but by how similar their story meanings are. Books about space travel sit right next to books about futuristic robotics, even if written centuries apart!\n\nIn computer science, a vector database does exactly this: it translates text and images into numerical coordinates (vectors) so it can instantly find items with similar meanings.\n\nQuestion for you: If you searched for 'cozy winter drink' in a vector library, which items do you think would sit closest in vector space: 'iced lemonade' or 'hot chocolate'?"
+  },
+  {
+    "id": 18,
+    "category": "Role Prompting",
+    "title": "Venture Capital Pitch Judge",
+    "description": "Critiques startup ideas with ruthless VC investor discipline.",
+    "input_text": "We are building an Uber for dog walking using blockchain.",
+    "naive_prompt": "Is this a good startup idea?",
+    "engineered_prompt": "You are a partner at a top Silicon Valley VC firm (Sequoia/Y Combinator style). Evaluate the startup idea below. Give a brutal 3-point critique covering:\n- Problem-Market Fit\n- Unnecessary Technology (Gimmick alert)\n- Final Investment Verdict (Invest / Pass).\nIdea: \"We are building an Uber for dog walking using blockchain.\"",
+    "before_output": "Sounds like an interesting startup idea.",
+    "after_output": "💼 VC Investment Evaluation:\n\n1. Problem-Market Fit: Existing local pet care networks (Rover, Wag) already address trust and scheduling. Market is saturated.\n2. Tech Gimmick Alert: Blockchain adds unnecessary gas fees, latency, and user friction to a simple local service transaction.\n3. Verdict: PASS. (Reason: Lack of clear moat, shoehorned tech stack, and unit economics don't justify blockchain overhead)."
+  },
+  {
+    "id": 19,
+    "category": "Role Prompting",
+    "title": "Strict Regulatory Compliance Officer",
+    "description": "Audits data processing pipelines against GDPR and HIPAA requirements.",
+    "input_text": "We store user patient names, SSNs, and treatment histories in unencrypted S3 buckets for analytics.",
+    "naive_prompt": "Is this legal?",
+    "engineered_prompt": "You are a Chief Compliance & Privacy Officer (CISO). Audit the data practice below under HIPAA and GDPR standards. Provide:\n- Violations identified\n- Potential regulatory fine risk\n- Mandatory remediation plan.\nData practice: \"We store user patient names, SSNs, and treatment histories in unencrypted S3 buckets for analytics.\"",
+    "before_output": "No, you should encrypt your S3 buckets.",
+    "after_output": "🛑 COMPLIANCE AUDIT NOTICE:\n\n1. Critical Violations:\n   - HIPAA Safeguards Rule (45 CFR § 164.312): Failure to encrypt Protected Health Information (PHI) at rest.\n   - GDPR Article 32: Inadequate technical security measures for PII processing.\n2. Fine Risk: Tier 4 HIPAA violations (up to $1.5M/year per violation category) + GDPR fines up to 4% of global turnover.\n3. Immediate Remediation:\n   - Enable AWS S3 KMS AES-256 Server-Side Encryption immediately.\n   - Restrict bucket access via IAM policies and enable AWS GuardDuty S3 protection.\n   - Anonymize/Pseudonymize dataset before analytics ingestion."
+  },
+  {
+    "id": 20,
+    "category": "Role Prompting",
+    "title": "UX Microcopy & Copywriter Expert",
+    "description": "Crafts intuitive UI error messages and button labels for web apps.",
+    "input_text": "Error 500: Server null pointer exception when submitting form.",
+    "naive_prompt": "Write a user friendly error message.",
+    "engineered_prompt": "You are a Lead UX Writer at Apple. Rewrite the raw technical error message below into a empathetic, user-friendly microcopy dialog for a web application.\nRequirements: Header (friendly), Body (clear explanation without technical jargon), Call to Action (CTA button text).\nRaw Error: \"Error 500: Server null pointer exception when submitting form.\"",
+    "before_output": "An error occurred on the server. Please try again.",
+    "after_output": "Header: Something went wrong on our end 🌿\nBody: We couldn't complete your request just now. Your information is safe, and our engineering team has been notified.\nCTA: [ Try Again ] | [ Return to Dashboard ]"
+  }
+]
