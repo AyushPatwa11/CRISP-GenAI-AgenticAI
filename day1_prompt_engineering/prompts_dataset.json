@@ -173,12 +173,7 @@
     "naive_prompt": "Review this code.",
     "engineered_prompt": "You are a Principal Security Engineer and Tech Lead. Review the Python snippet below. Provide:\n1. Critical Security Vulnerability\n2. Performance & Code Quality Issues\n3. Production-Ready Refactored Code\nSnippet: \"def get_user(id): res = db.execute(f'SELECT * FROM users WHERE id = {id}'); return res.fetchone()\"",
     "before_output": "The code works fine to get a user by ID.",
-    "after_output": "🛡️ Security Code Review:\n\n1. CRITICAL VULNERABILITY (SQL Injection): String f-string formatting direct into SQL allows arbitrary SQL injection attack vector.\n2. QUALITY ISSUE: Select * retrieves all columns needlessly, and lack of type annotations.\n\n3. PRODUCTION REFACTORED CODE:\n```python
-def get_user_by_id(user_id: int) -> dict | None:
-    query = 'SELECT id, username, email FROM users WHERE id = :id'
-    result = db.execute(query, {'id': user_id})
-    return result.fetchone()
-```"
+    "after_output": "🛡️ Security Code Review:\n\n1. CRITICAL VULNERABILITY (SQL Injection): String f-string formatting direct into SQL allows arbitrary SQL injection attack vector.\n2. QUALITY ISSUE: Select * retrieves all columns needlessly, and lack of type annotations.\n\n3. PRODUCTION REFACTORED CODE:\n```python\ndef get_user_by_id(user_id: int) -> dict | None:\n    query = 'SELECT id, username, email FROM users WHERE id = :id'\n    result = db.execute(query, {'id': user_id})\n    return result.fetchone()\n```"
   },
   {
     "id": 17,

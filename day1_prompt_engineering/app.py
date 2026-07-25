@@ -21,7 +21,11 @@ DATA_PATH = os.path.join(os.path.dirname(__file__), "prompts_dataset.json")
 def load_prompts():
     if os.path.exists(DATA_PATH):
         with open(DATA_PATH, "r", encoding="utf-8") as f:
-            return json.load(f)
+            content = f.read()
+            try:
+                return json.loads(content)
+            except Exception:
+                return json.loads(content, strict=False)
     return []
 
 prompts = load_prompts()
