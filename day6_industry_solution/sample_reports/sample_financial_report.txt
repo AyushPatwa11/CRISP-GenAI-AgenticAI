@@ -1,0 +1,25 @@
+ACME TECH CORP - FISCAL YEAR 2025 FINANCIAL AUDIT REPORT
+
+Executive Overview:
+Acme Tech Corp delivered strong operational performance in FY2025, driven by accelerating adoption of enterprise cloud infrastructure and AI developer tooling. Total consolidated revenue reached $150,000,000, representing a 24% year-over-year increase compared to FY2024 ($121,000,000).
+
+Financial Performance Metrics:
+- Total Revenue: $150,000,000
+- Operating Expenses: $95,000,000
+- Net Income: $35,000,000
+- Total Assets: $210,000,000
+- Total Liabilities: $70,000,000
+- Cash & Equivalents: $45,000,000
+
+Segment Performance:
+1. Enterprise Cloud Solutions: Revenue of $90,000,000 (+30% YoY). High margin cloud subscriptions.
+2. AI Developer Tools: Revenue of $40,000,000 (+45% YoY). Fast growing segment.
+3. Legacy Software Licensing: Revenue of $20,000,000 (-10% YoY). Managed decline.
+
+Key Risk Factors:
+1. Increased GPU hardware supply chain latency and semiconductor cost inflation.
+2. Escalating cybersecurity threats and data privacy compliance mandates across EU regions.
+3. High customer acquisition cost (CAC) in competitive mid-market segments.
+
+Strategic Guidance & FY2026 Outlook:
+Management projects full-year FY2026 revenue between $180M and $190M. Capital allocation will prioritize R&D for next-generation agentic AI products while expanding enterprise direct sales capacity.
