@@ -3,24 +3,24 @@ import os
 from viva_prep import VIVA_QUESTIONS
 
 st.set_page_config(
-    page_title="CRISP AI Portfolio Hub & Capstone Portal",
+    page_title="ApexAI Hub - Portfolio & Assessment Portal",
     page_icon="🎓",
     layout="wide"
 )
 
-st.title("🎓 CRISP Generative & Agentic AI Master Portfolio")
-st.caption("Rungta Engineering College, Bhilai — 7-Day Complete Project & Assessment Suite")
+st.title("🎓 ApexAI Hub — Master Portfolio & Assessment Portal")
+st.caption("Rungta Engineering College, Bhilai — 7 Complete Generative & Agentic AI Projects")
 
 # Navigation Tabs
 tab_overview, tab_projects, tab_viva, tab_architecture = st.tabs([
     "🏠 Portfolio Overview",
-    "🚀 Daily Project Launcher",
+    "🚀 App Suite Launcher",
     "🧠 Viva & Quiz Prep Center",
     "📐 System Architecture"
 ])
 
 with tab_overview:
-    st.markdown("### 🏆 7-Day Hands-on Generative & Agentic AI Mastery")
+    st.markdown("### 🏆 7 Hands-on Generative & Agentic AI Projects")
     st.markdown("""
     Welcome to the unified master portfolio dashboard. This repository contains 7 end-to-end production AI applications built with **Python**, **Streamlit**, **LangChain**, **Groq/OpenAI APIs**, **ChromaDB**, and **Model Context Protocol (MCP)**.
     """)
@@ -32,20 +32,20 @@ with tab_overview:
 
     st.divider()
 
-    st.markdown("### 📚 Daily Project Summary")
+    st.markdown("### 📚 Project Suite Overview")
     
     projects_info = [
-        {"day": "Day 1", "name": "Prompt Engineering Showcase", "icon": "⚡", "desc": "20 Prompts across Zero-shot, Few-shot, CoT & Role prompting with before/after outputs."},
-        {"day": "Day 2", "name": "AI Resume & Career Matcher", "icon": "💼", "desc": "Streamlit app with prompt templates, temperature controls, and cover letter generator."},
-        {"day": "Day 3", "name": "RAG PDF Knowledge Chatbot", "icon": "📚", "desc": "Multi-PDF QA chatbot with HuggingFace embeddings, ChromaDB, and source citations."},
-        {"day": "Day 4", "name": "Autonomous ReAct Agent", "icon": "🤖", "desc": "Agentic AI with tool calling, working memory, and live visual execution traces."},
-        {"day": "Day 5", "name": "Tool & MCP Integration", "icon": "🔌", "desc": "Real-time weather API, web search, and Model Context Protocol (MCP) tool registry."},
-        {"day": "Day 6", "name": "Financial Filing Analyzer", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
-        {"day": "Day 7", "name": "Capstone & Viva Prep Hub", "icon": "🎓", "desc": "Unified portal hosting all 7 projects with an interactive Viva Voce quiz module."}
+        {"name": "Promptify AI", "icon": "⚡", "desc": "20 Prompts across Zero-shot, Few-shot, CoT & Role prompting with before/after outputs."},
+        {"name": "CareerVibe AI", "icon": "💼", "desc": "Streamlit app with prompt templates, temperature controls, and cover letter generator."},
+        {"name": "DocuBrain AI", "icon": "📚", "desc": "Multi-PDF QA chatbot with HuggingFace embeddings, ChromaDB, and source citations."},
+        {"name": "AgentFlow AI", "icon": "🤖", "desc": "Agentic AI with tool calling, working memory, and live visual execution traces."},
+        {"name": "OmniTool MCP", "icon": "🔌", "desc": "Real-time weather API, web search, and Model Context Protocol (MCP) tool registry."},
+        {"name": "FinPulse AI", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
+        {"name": "ApexAI Hub", "icon": "🎓", "desc": "Unified portal hosting all 7 projects with an interactive Viva Voce quiz module."}
     ]
 
     for p in projects_info:
-        with st.expander(f"{p['icon']} {p['day']}: {p['name']}", expanded=True):
+        with st.expander(f"{p['icon']} {p['name']}", expanded=True):
             st.write(p['desc'])
 
 with tab_projects:

@@ -8,12 +8,12 @@ from templates import RESUME_ANALYSIS_PROMPT
 load_dotenv()
 
 st.set_page_config(
-    page_title="Day 2 - AI Resume & Career Analyzer",
+    page_title="CareerVibe AI - Smart Resume & Match Engine",
     page_icon="💼",
     layout="wide"
 )
 
-st.title("💼 Day 2: AI Resume & Career Match Analyzer")
+st.title("💼 CareerVibe AI — Smart Resume & Career Match Engine")
 st.caption("Powered by Groq / OpenAI LLMs & LangChain Structured Prompt Templates")
 
 # Sidebar Configuration & Parameters

@@ -7,12 +7,12 @@ from mcp_bridge import MCPToolRegistry
 load_dotenv()
 
 st.set_page_config(
-    page_title="Day 5 - External Tool & MCP Integration",
+    page_title="OmniTool MCP - Tool & Protocol Bridge",
     page_icon="🔌",
     layout="wide"
 )
 
-st.title("🔌 Day 5: Tool & Model Context Protocol (MCP) Integration")
+st.title("🔌 OmniTool MCP — Real-Time API & Protocol Bridge")
 st.caption("Connect LLMs to Real-Time Web APIs, Live Weather Services, and Standardized MCP Tool Servers")
 
 # Initialize MCP registry

@@ -6,12 +6,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 st.set_page_config(
-    page_title="Day 1 - Prompt Engineering Showcase",
+    page_title="Promptify AI - Interactive Benchmark Lab",
     page_icon="⚡",
     layout="wide"
 )
 
-st.title("⚡ Day 1: Prompt Engineering Showcase & Lab")
+st.title("⚡ Promptify AI — Interactive Prompt Engineering Lab")
 st.caption("Explore 20 Mastered Prompts across Zero-shot, Few-shot, Chain-of-Thought, and Role Prompting techniques.")
 
 # Load dataset

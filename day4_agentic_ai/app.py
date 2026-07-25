@@ -6,12 +6,12 @@ from agent import ReActAgent
 load_dotenv()
 
 st.set_page_config(
-    page_title="Day 4 - Autonomous Agentic AI Dashboard",
+    page_title="AgentFlow AI - Autonomous ReAct Agent",
     page_icon="🤖",
     layout="wide"
 )
 
-st.title("🤖 Day 4: Autonomous Agentic AI Workflow & Visual Trace")
+st.title("🤖 AgentFlow AI — Autonomous ReAct Agent & Visual Trace")
 st.caption("ReAct (Reasoning + Acting) Agent featuring Tool Invocation, Working Memory, and Step-by-Step Execution Traces")
 
 # Sidebar settings

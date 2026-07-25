@@ -7,12 +7,12 @@ from rag_engine import RAGEngine
 load_dotenv()
 
 st.set_page_config(
-    page_title="Day 3 - RAG PDF Knowledge Chatbot",
+    page_title="DocuBrain AI - RAG Knowledge Engine",
     page_icon="📚",
     layout="wide"
 )
 
-st.title("📚 Day 3: RAG PDF Knowledge Chatbot")
+st.title("📚 DocuBrain AI — RAG PDF & Knowledge Search Engine")
 st.caption("Powered by LangChain, HuggingFace Embeddings, ChromaDB & Groq/OpenAI LLMs")
 
 # Initialize session state for RAG engine and chat history
