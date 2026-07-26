@@ -67,18 +67,18 @@ if use_sample_doc:
         st.session_state.indexed = False
 
 if uploaded_files:
-    uploaded_paths = []
-    names = []
-    for file in uploaded_files:
-        temp_dir = tempfile.gettempdir()
-        temp_path = os.path.join(temp_dir, file.name)
-        with open(temp_path, "wb") as f:
-            f.write(file.read())
-        uploaded_paths.append(temp_path)
-        names.append(file.name)
-    st.session_state.temp_files_to_process = uploaded_paths
-    st.session_state.active_doc_name = ", ".join(names)
-    st.session_state.indexed = False
+    names_str = ", ".join([f.name for f in uploaded_files])
+    if st.session_state.active_doc_name != names_str:
+        uploaded_paths = []
+        for file in uploaded_files:
+            temp_dir = tempfile.gettempdir()
+            temp_path = os.path.join(temp_dir, file.name)
+            with open(temp_path, "wb") as f:
+                f.write(file.read())
+            uploaded_paths.append(temp_path)
+        st.session_state.temp_files_to_process = uploaded_paths
+        st.session_state.active_doc_name = names_str
+        st.session_state.indexed = False
 
 if st.session_state.temp_files_to_process:
     st.sidebar.info(f"📄 Selected Document: **{st.session_state.active_doc_name}**")
