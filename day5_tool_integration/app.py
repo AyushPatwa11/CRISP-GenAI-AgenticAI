@@ -23,48 +23,7 @@ st.caption("Connect LLMs to Real-Time Web APIs, Live Weather Services, and Stand
 
 # Initialize MCP Registry
 registry = MCPToolRegistry()
-
-# Register Tools
-registry.register_tool(
-    name="get_live_weather",
-    description="Fetches real-time temperature and wind speed for any city using Open-Meteo REST API.",
-    parameters={
-        "type": "object",
-        "properties": {
-            "city": {"type": "string", "description": "City name, e.g. 'Bhilai', 'London', 'Tokyo'"}
-        },
-        "required": ["city"]
-    },
-    func=lambda args: get_live_weather(args.get("city", "Bhilai"))
-)
-
-registry.register_tool(
-    name="search_web_duckduckgo",
-    description="Performs live web search for news, release dates, stocks, and general information.",
-    parameters={
-        "type": "object",
-        "properties": {
-            "query": {"type": "string", "description": "Web search query string"}
-        },
-        "required": ["query"]
-    },
-    func=lambda args: search_web_duckduckgo(args.get("query", "Agentic AI"))
-)
-
-registry.register_tool(
-    name="create_calendar_invite",
-    description="Schedules a calendar meeting invite with title, date, and attendees.",
-    parameters={
-        "type": "object",
-        "properties": {
-            "title": {"type": "string", "description": "Meeting title"},
-            "date_str": {"type": "string", "description": "Date & time string"},
-            "attendees": {"type": "string", "description": "Comma-separated emails"}
-        },
-        "required": ["title", "date_str", "attendees"]
-    },
-    func=lambda args: create_calendar_invite_mock(args.get("title", "Sync"), args.get("date_str", "Tomorrow 3pm"), args.get("attendees", "user@example.com"))
-)
+schemas = registry.list_mcp_schemas()
 
 # Sidebar
 st.sidebar.header("⚙️ LLM & MCP Settings")
@@ -105,7 +64,6 @@ with tab1:
 with tab2:
     st.markdown("### 📋 Model Context Protocol (MCP) JSON Schemas")
     st.caption("Standardized MCP tool definitions generated dynamically for AI model tool calling.")
-    schemas = registry.get_all_schemas()
     st.json(schemas)
 
 with tab3:
