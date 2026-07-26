@@ -1,5 +1,6 @@
 import os
 import shutil
+import chromadb
 from typing import List, Dict, Any, Tuple
 
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
@@ -7,8 +8,6 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-
-DB_DIR = os.path.join(os.path.dirname(__file__), "chroma_db")
 
 _cached_embeddings = None
 
@@ -46,14 +45,9 @@ class RAGEngine:
 
     def clear_vector_store(self):
         self.vector_store = None
-        if os.path.exists(DB_DIR):
-            try:
-                shutil.rmtree(DB_DIR, ignore_errors=True)
-            except Exception:
-                pass
 
     def process_documents(self, file_paths: List[str]) -> Tuple[int, int]:
-        """Loads PDFs/TXT files, splits into chunks, and creates a fresh vector database."""
+        """Loads PDFs/TXT files, splits into chunks, and creates a fresh Ephemeral Chroma vector database."""
         docs = []
         for file_path in file_paths:
             if file_path.endswith(".pdf"):
@@ -72,10 +66,12 @@ class RAGEngine:
         )
         chunks = text_splitter.split_documents(docs)
 
-        # Create fresh vector store containing ONLY newly processed documents
+        # Use EphemeralClient to guarantee clean in-memory vector database
+        client = chromadb.EphemeralClient()
         self.vector_store = Chroma.from_documents(
             documents=chunks,
-            embedding=self.embeddings
+            embedding=self.embeddings,
+            client=client
         )
         return len(docs), len(chunks)
 
