@@ -16,7 +16,7 @@ Welcome to the **ApexAI Suite**, a modern collection of 7 production-ready Gener
 |---|---|---|---|---|
 | 1 | **Promptify AI** | ⚡ | Prompt Engineering & Benchmarks | Streamlit, JSON Datasets, Groq/OpenAI |
 | 2 | **CareerVibe AI** | 💼 | Smart Resume & Career Match Engine | LangChain, Pydantic, Structured Prompting |
-| 3 | **DocuBrain AI** | 📚 | RAG PDF & Knowledge Search Engine | ChromaDB, HuggingFace Embeddings, PyPDF |
+| 3 | **KromaPDF AI** | 📚 | RAG PDF & Knowledge Search Engine | ChromaDB, HuggingFace Embeddings, PyPDF |
 | 4 | **AgentFlow AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
 | 5 | **OmniTool MCP** | 🔌 | Real-Time API & Protocol Bridge | Open-Meteo REST, DuckDuckGo, MCP Registry |
 | 6 | **FinPulse AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
@@ -46,8 +46,8 @@ CRISP-GenAI-AgenticAI/
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day3_rag_system/                 # DocuBrain AI: RAG Knowledge Engine
-│   ├── app.py                       # DocuBrain AI Streamlit App
+├── day3_rag_system/                 # KromaPDF AI: RAG Knowledge Engine
+│   ├── app.py                       # KromaPDF AI Streamlit App
 │   ├── rag_engine.py                # PyPDF Loader, Text Splitter, HuggingFace & ChromaDB
 │   ├── sample_docs/                 # Sample handbook document
 │   ├── reflection_report.md
@@ -112,7 +112,7 @@ Launch any application suite directly via Streamlit:
 |---|---|---|
 | ⚡ **Promptify AI** | `streamlit run day1_prompt_engineering/app.py` | 20 Prompt Engineering Showcase |
 | 💼 **CareerVibe AI** | `streamlit run day2_llm_app/app.py` | Smart Resume & Career Match Engine |
-| 📚 **DocuBrain AI** | `streamlit run day3_rag_system/app.py` | RAG PDF Knowledge Search |
+| 📚 **KromaPDF AI** | `streamlit run day3_rag_system/app.py` | RAG PDF Knowledge Search |
 | 🤖 **AgentFlow AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
 | 🔌 **OmniTool MCP** | `streamlit run day5_tool_integration/app.py` | Real-Time API & MCP Protocol Bridge |
 | 📈 **FinPulse AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |

@@ -1,4 +1,4 @@
-# Day 3: RAG PDF Knowledge Chatbot
+# Day 3: KromaPDF AI — RAG PDF & Knowledge Search Engine
 
 This directory contains the Day 3 deliverables for the CRISP Generative & Agentic AI Program.
 

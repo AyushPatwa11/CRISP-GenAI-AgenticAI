@@ -37,7 +37,7 @@ with tab_overview:
     projects_info = [
         {"name": "Promptify AI", "icon": "⚡", "desc": "20 Prompts across Zero-shot, Few-shot, CoT & Role prompting with before/after outputs."},
         {"name": "CareerVibe AI", "icon": "💼", "desc": "Streamlit app with prompt templates, temperature controls, and cover letter generator."},
-        {"name": "DocuBrain AI", "icon": "📚", "desc": "Multi-PDF QA chatbot with HuggingFace embeddings, ChromaDB, and source citations."},
+        {"name": "KromaPDF AI", "icon": "📚", "desc": "Multi-PDF QA chatbot with HuggingFace embeddings, ChromaDB, and source citations."},
         {"name": "AgentFlow AI", "icon": "🤖", "desc": "Agentic AI with tool calling, working memory, and live visual execution traces."},
         {"name": "OmniTool MCP", "icon": "🔌", "desc": "Real-time weather API, web search, and Model Context Protocol (MCP) tool registry."},
         {"name": "FinPulse AI", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
