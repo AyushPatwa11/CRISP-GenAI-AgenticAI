@@ -1,7 +1,11 @@
 import streamlit as st
 import json
 import os
+import sys
 from dotenv import load_dotenv
+
+sys.path.append(os.path.dirname(__file__))
+
 from mcp_schema import MCPToolRegistry
 from external_tools import get_live_weather, search_web_duckduckgo, create_calendar_invite_mock
 
