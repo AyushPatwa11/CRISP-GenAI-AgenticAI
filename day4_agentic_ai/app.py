@@ -45,21 +45,30 @@ with col3:
 st.divider()
 st.markdown("### 🎯 User Goal & Task Execution")
 
-# Sample Preset Goals
-st.caption("💡 Quick Test Presets (Click any to auto-fill):")
-preset_cols = st.columns(3)
-selected_preset = ""
+# Sample Preset Goals Dropdown
+sample_goals_library = [
+    "--- Select a Sample Goal to Auto-Fill ---",
+    "💵 Currency + Tax Math: Convert $250 USD to INR, then add 18% GST tax on that converted amount.",
+    "💶 Currency Conversion: Convert $1200 USD to EUR and subtract 5% service fee.",
+    "💷 Currency Tip Calculation: What is $500 USD in GBP, and what is a 10% tip on that amount?",
+    "🧮 Multi-Step Math: Calculate 150 multiplied by 85, then add 450 to the result.",
+    "📐 Geometry Math: Calculate 3.14159 * (14 * 14) and divide by 2.",
+    "🔢 Complex Expression: Evaluate (250 * 4) + (800 / 4) - 150.",
+    "📊 Text Stats: Analyze text stats for: Artificial Intelligence is revolutionizing modern agentic workflows!",
+    "📝 Word & Char Count: Analyze word count and character count for: Generative AI and Agentic Systems are transforming software.",
+    "🔤 Sentence Analysis: Calculate character count for: Building intelligent multi-tool autonomous agents with LangChain.",
+    "🌐 Chained Multi-Tool: Convert $300 USD to INR, add 18% tax, and analyze word count of 'Payment completed'."
+]
 
-if preset_cols[0].button("💵 Currency + Tax Math"):
-    selected_preset = "Convert $250 USD to INR, then add 18% GST tax on that converted amount."
-if preset_cols[1].button("📊 Text Stats Analysis"):
-    selected_preset = "Analyze text stats for: Artificial Intelligence is revolutionizing modern agentic workflows!"
-if preset_cols[2].button("🧮 Multi-Step Calculation"):
-    selected_preset = "Calculate 150 multiplied by 85, then add 450 to the result."
+selected_goal_option = st.selectbox("💡 Sample Goals Library (Choose from 10+ Diverse Test Scenarios):", sample_goals_library)
+
+default_text = "Convert $250 USD to INR, then calculate a 18% tax on that total."
+if selected_goal_option != "--- Select a Sample Goal to Auto-Fill ---":
+    default_text = selected_goal_option.split(": ", 1)[-1]
 
 user_goal = st.text_area(
-    "Enter a goal for the autonomous agent:",
-    value=selected_preset if selected_preset else "Convert $250 USD to INR, then calculate a 18% tax on that total.",
+    "Enter or edit a goal for the autonomous agent:",
+    value=default_text,
     height=80,
     placeholder="e.g. Convert $100 USD to EUR and calculate 10% tip..."
 )
