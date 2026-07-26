@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # Ensure local script directory is first in sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from mcp_schema import MCPToolRegistry
+from mcp_bridge import MCPToolRegistry
 from external_tools import get_live_weather, search_web_duckduckgo, create_calendar_invite_mock
 
 load_dotenv()
