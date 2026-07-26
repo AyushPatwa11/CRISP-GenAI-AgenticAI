@@ -17,7 +17,7 @@ Welcome to the **ApexAI Suite**, a modern collection of 7 production-ready Gener
 | 1 | **Promptify AI** | ⚡ | Prompt Engineering & Benchmarks | Streamlit, JSON Datasets, Groq/OpenAI |
 | 2 | **CareerVibe AI** | 💼 | Smart Resume & Career Match Engine | LangChain, Pydantic, Structured Prompting |
 | 3 | **KromaPDF AI** | 📚 | RAG PDF & Knowledge Search Engine | ChromaDB, HuggingFace Embeddings, PyPDF |
-| 4 | **AgentFlow AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
+| 4 | **CogniTrace AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
 | 5 | **OmniTool MCP** | 🔌 | Real-Time API & Protocol Bridge | Open-Meteo REST, DuckDuckGo, MCP Registry |
 | 6 | **FinPulse AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
 | 7 | **ApexAI Hub** | 🎓 | Master Portfolio & Viva Prep Center | Multi-page Portal, Interactive Viva Quiz |
@@ -53,8 +53,8 @@ CRISP-GenAI-AgenticAI/
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day4_agentic_ai/                 # AgentFlow AI: Autonomous ReAct Agent
-│   ├── app.py                       # AgentFlow AI Visual Trace Dashboard
+├── day4_agentic_ai/                 # CogniTrace AI: Autonomous ReAct Agent
+│   ├── app.py                       # CogniTrace AI Visual Trace Dashboard
 │   ├── agent.py                     # Custom ReAct agent (Memory, Planning, Tools)
 │   ├── tools.py                     # Calculator, Text Analyzer, Currency Converter
 │   ├── reflection_report.md
@@ -113,7 +113,7 @@ Launch any application suite directly via Streamlit:
 | ⚡ **Promptify AI** | `streamlit run day1_prompt_engineering/app.py` | 20 Prompt Engineering Showcase |
 | 💼 **CareerVibe AI** | `streamlit run day2_llm_app/app.py` | Smart Resume & Career Match Engine |
 | 📚 **KromaPDF AI** | `streamlit run day3_rag_system/app.py` | RAG PDF Knowledge Search |
-| 🤖 **AgentFlow AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
+| 🤖 **CogniTrace AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
 | 🔌 **OmniTool MCP** | `streamlit run day5_tool_integration/app.py` | Real-Time API & MCP Protocol Bridge |
 | 📈 **FinPulse AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |
 | 🎓 **ApexAI Hub** | `streamlit run day7_capstone/app.py` | **Master Capstone & Viva Prep Center** |

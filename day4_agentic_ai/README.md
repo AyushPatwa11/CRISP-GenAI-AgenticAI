@@ -1,4 +1,4 @@
-# Day 4: Autonomous Agentic AI Workflow
+# Day 4: CogniTrace AI — Autonomous ReAct Agent & Visual Trace
 
 This directory contains the Day 4 deliverables for the CRISP Generative & Agentic AI Program.
 

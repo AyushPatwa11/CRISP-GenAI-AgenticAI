@@ -6,12 +6,12 @@ from agent import ReActAgent
 load_dotenv()
 
 st.set_page_config(
-    page_title="AgentFlow AI - Autonomous ReAct Agent",
+    page_title="CogniTrace AI - Autonomous ReAct Agent",
     page_icon="🤖",
     layout="wide"
 )
 
-st.title("🤖 AgentFlow AI — Autonomous ReAct Agent & Visual Trace")
+st.title("🤖 CogniTrace AI — Autonomous ReAct Agent & Visual Trace")
 st.caption("ReAct (Reasoning + Acting) Agent featuring Tool Invocation, Working Memory, and Step-by-Step Execution Traces")
 
 # Sidebar Configuration
