@@ -7,12 +7,8 @@ from dotenv import load_dotenv
 # Ensure local script directory is first in sys.path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-try:
-    from mcp_schema import MCPToolRegistry
-    from external_tools import get_live_weather, search_web_duckduckgo, create_calendar_invite_mock
-except ImportError:
-    from day5_tool_integration.mcp_schema import MCPToolRegistry
-    from day5_tool_integration.external_tools import get_live_weather, search_web_duckduckgo, create_calendar_invite_mock
+from mcp_schema import MCPToolRegistry
+from external_tools import get_live_weather, search_web_duckduckgo, create_calendar_invite_mock
 
 load_dotenv()
 
