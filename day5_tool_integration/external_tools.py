@@ -29,16 +29,26 @@ def get_live_weather(city: str) -> str:
         return f"Weather Service Error: {str(e)}"
 
 def search_web_duckduckgo(query: str) -> str:
-    """Performs web search using DuckDuckGo Search."""
+    """Performs web search using DDGS."""
     try:
-        from duckduckgo_search import DDGS
-        with DDGS() as ddgs:
-            results = list(ddgs.text(query, max_results=3))
-            if not results:
-                return f"No web search results found for '{query}'."
-            
-            snippets = [f"[{r['title']}] ({r['href']}): {r['body']}" for r in results]
-            return "\n\n".join(snippets)
+        try:
+            from ddgs import DDGS
+        except ImportError:
+            from duckduckgo_search import DDGS
+
+        ddgs = DDGS()
+        results = list(ddgs.text(query, max_results=4))
+        
+        if not results:
+            # Fallback for empty results: retry without year or clean query
+            cleaned_query = query.replace("2026", "").strip()
+            results = list(ddgs.text(cleaned_query, max_results=4))
+
+        if not results:
+            return f"No web search results found for '{query}'."
+        
+        snippets = [f"📌 [{r.get('title', 'Result')}]({r.get('href', '#')})\n{r.get('body', '')}" for r in results]
+        return "\n\n".join(snippets)
     except Exception as e:
         return f"Web Search Error: {str(e)}"
 
