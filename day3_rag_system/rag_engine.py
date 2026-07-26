@@ -5,23 +5,44 @@ from typing import List, Dict, Any, Tuple
 from langchain_community.document_loaders import PyPDFLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain_core.runnables import RunnablePassthrough
 
 DB_DIR = os.path.join(os.path.dirname(__file__), "chroma_db")
+
+_cached_embeddings = None
+
+def get_embeddings():
+    global _cached_embeddings
+    if _cached_embeddings is None:
+        try:
+            import streamlit as st
+            @st.cache_resource
+            def load_hf_model():
+                from langchain_community.embeddings import HuggingFaceEmbeddings
+                return HuggingFaceEmbeddings(
+                    model_name="sentence-transformers/all-MiniLM-L6-v2",
+                    model_kwargs={'device': 'cpu'}
+                )
+            _cached_embeddings = load_hf_model()
+        except Exception:
+            from langchain_community.embeddings import HuggingFaceEmbeddings
+            _cached_embeddings = HuggingFaceEmbeddings(
+                model_name="sentence-transformers/all-MiniLM-L6-v2",
+                model_kwargs={'device': 'cpu'}
+            )
+    return _cached_embeddings
+
 
 class RAGEngine:
     def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        # Use lightweight CPU sentence-transformer model
-        self.embeddings = HuggingFaceEmbeddings(
-            model_name="sentence-transformers/all-MiniLM-L6-v2",
-            model_kwargs={'device': 'cpu'}
-        )
         self.vector_store = None
+
+    @property
+    def embeddings(self):
+        return get_embeddings()
 
     def clear_vector_store(self):
         if os.path.exists(DB_DIR):
