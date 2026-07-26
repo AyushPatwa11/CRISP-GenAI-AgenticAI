@@ -45,11 +45,15 @@ class RAGEngine:
         return get_embeddings()
 
     def clear_vector_store(self):
+        self.vector_store = None
         if os.path.exists(DB_DIR):
-            shutil.rmtree(DB_DIR, ignore_errors=True)
+            try:
+                shutil.rmtree(DB_DIR, ignore_errors=True)
+            except Exception:
+                pass
 
     def process_documents(self, file_paths: List[str]) -> Tuple[int, int]:
-        """Loads PDFs/TXT files, splits into chunks, and indexes into ChromaDB."""
+        """Loads PDFs/TXT files, splits into chunks, and creates a fresh vector database."""
         docs = []
         for file_path in file_paths:
             if file_path.endswith(".pdf"):
@@ -68,30 +72,15 @@ class RAGEngine:
         )
         chunks = text_splitter.split_documents(docs)
 
-        # Clear previous vector store for fresh session
-        self.clear_vector_store()
-
+        # Create fresh vector store containing ONLY newly processed documents
         self.vector_store = Chroma.from_documents(
             documents=chunks,
-            embedding=self.embeddings,
-            persist_directory=DB_DIR
+            embedding=self.embeddings
         )
         return len(docs), len(chunks)
 
-    def load_existing_db(self) -> bool:
-        if os.path.exists(DB_DIR) and len(os.listdir(DB_DIR)) > 0:
-            self.vector_store = Chroma(
-                persist_directory=DB_DIR,
-                embedding_function=self.embeddings
-            )
-            return True
-        return False
-
     def query(self, question: str, llm: Any, k: int = 3) -> Dict[str, Any]:
         """Performs RAG search and generates response with cited sources."""
-        if not self.vector_store:
-            self.load_existing_db()
-
         if not self.vector_store:
             raise ValueError("No indexed vector store found. Please process documents first.")
 

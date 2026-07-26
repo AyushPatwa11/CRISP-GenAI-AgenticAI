@@ -15,7 +15,7 @@ st.set_page_config(
 st.title("📚 DocuBrain AI — RAG PDF & Knowledge Search Engine")
 st.caption("Powered by LangChain, HuggingFace Embeddings, ChromaDB & Groq/OpenAI LLMs")
 
-# Initialize session state for RAG engine and chat history
+# Initialize session state
 if "rag_engine" not in st.session_state:
     st.session_state.rag_engine = RAGEngine()
 
@@ -24,6 +24,9 @@ if "chat_history" not in st.session_state:
 
 if "indexed" not in st.session_state:
     st.session_state.indexed = False
+
+if "active_doc_name" not in st.session_state:
+    st.session_state.active_doc_name = ""
 
 # Sidebar Configuration
 st.sidebar.header("⚙️ RAG & Model Settings")
@@ -60,19 +63,25 @@ if use_sample_doc:
     sample_path = os.path.join(os.path.dirname(__file__), "sample_docs", "ai_handbook_summary.txt")
     if os.path.exists(sample_path):
         st.session_state.temp_files_to_process = [sample_path]
+        st.session_state.active_doc_name = "Sample CRISP Handbook Document"
+        st.session_state.indexed = False
 
 if uploaded_files:
     uploaded_paths = []
+    names = []
     for file in uploaded_files:
         temp_dir = tempfile.gettempdir()
         temp_path = os.path.join(temp_dir, file.name)
         with open(temp_path, "wb") as f:
             f.write(file.read())
         uploaded_paths.append(temp_path)
+        names.append(file.name)
     st.session_state.temp_files_to_process = uploaded_paths
+    st.session_state.active_doc_name = ", ".join(names)
+    st.session_state.indexed = False
 
 if st.session_state.temp_files_to_process:
-    st.sidebar.info(f"📄 Ready to index {len(st.session_state.temp_files_to_process)} document(s).")
+    st.sidebar.info(f"📄 Selected Document: **{st.session_state.active_doc_name}**")
     if st.sidebar.button("⚡ Index Documents in ChromaDB", type="primary"):
         with st.spinner("Processing & embedding documents into ChromaDB..."):
             try:
@@ -80,18 +89,25 @@ if st.session_state.temp_files_to_process:
                 st.session_state.rag_engine.chunk_overlap = chunk_overlap
                 num_docs, num_chunks = st.session_state.rag_engine.process_documents(st.session_state.temp_files_to_process)
                 st.session_state.indexed = True
+                st.session_state.chat_history = []  # Clear previous chat on new index
                 st.sidebar.success(f"Indexed {num_docs} document(s) into {num_chunks} vector chunks!")
             except Exception as e:
                 st.sidebar.error(f"Error indexing docs: {str(e)}")
 
-# Display Vector Store Status
-if st.session_state.rag_engine.load_existing_db():
-    st.session_state.indexed = True
+st.sidebar.divider()
+if st.sidebar.button("🗑️ Reset Vector DB & Chat"):
+    st.session_state.rag_engine.clear_vector_store()
+    st.session_state.indexed = False
+    st.session_state.temp_files_to_process = []
+    st.session_state.chat_history = []
+    st.session_state.active_doc_name = ""
+    st.sidebar.success("Reset complete!")
 
+# Display Vector Store Status
 if st.session_state.indexed:
-    st.info("🟢 Vector DB Status: Active & Indexed in ChromaDB.")
+    st.info(f"🟢 Vector DB Status: Active & Indexed with **{st.session_state.active_doc_name}**")
 else:
-    st.warning("⚠️ Vector DB Status: Empty. Upload a document or click 'Load Sample Document' in the sidebar.")
+    st.warning("⚠️ Vector DB Status: Empty. Upload your PDF/TXT or click 'Load Sample Document' in the sidebar, then click 'Index Documents'.")
 
 st.divider()
 
@@ -111,8 +127,8 @@ user_query = st.chat_input("Ask a question about your uploaded documents...")
 
 if user_query:
     if not st.session_state.indexed:
-        st.error("Please load and index at least one document before asking questions.")
-    elif not api_key:
+        st.error("Please load and click '⚡ Index Documents in ChromaDB' before asking questions.")
+    elif not api_key.strip():
         st.error("Please enter your API Key in the sidebar.")
     else:
         # Display user message
