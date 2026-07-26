@@ -6,7 +6,7 @@ def get_live_weather(city: str) -> str:
     try:
         # Step 1: Geocoding lookup for lat/lon
         geo_url = f"https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1&language=en&format=json"
-        geo_res = requests.get(geo_url, timeout=5).json()
+        geo_res = requests.get(geo_url, timeout=3).json()
         
         if not geo_res.get("results"):
             return f"Weather Error: Could not find location coordinates for '{city}'."
@@ -18,7 +18,7 @@ def get_live_weather(city: str) -> str:
         
         # Step 2: Fetch weather forecast data
         weather_url = f"https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}&current_weather=true"
-        w_res = requests.get(weather_url, timeout=5).json()
+        w_res = requests.get(weather_url, timeout=3).json()
         
         curr = w_res.get("current_weather", {})
         temp = curr.get("temperature", "N/A")
@@ -29,20 +29,20 @@ def get_live_weather(city: str) -> str:
         return f"Weather Service Error: {str(e)}"
 
 def search_web_duckduckgo(query: str) -> str:
-    """Performs web search using DDGS."""
+    """Performs web search using DDGS with fast 3-second timeout."""
     try:
         try:
             from ddgs import DDGS
         except ImportError:
             from duckduckgo_search import DDGS
 
-        ddgs = DDGS()
-        results = list(ddgs.text(query, max_results=4))
+        ddgs = DDGS(timeout=4)
+        results = list(ddgs.text(query, max_results=3))
         
         if not results:
-            # Fallback for empty results: retry without year or clean query
-            cleaned_query = query.replace("2026", "").strip()
-            results = list(ddgs.text(cleaned_query, max_results=4))
+            # Clean search query fallback
+            cleaned = query.replace("will release", "").replace("release date", "").strip()
+            results = list(ddgs.text(cleaned, max_results=3))
 
         if not results:
             return f"No web search results found for '{query}'."
