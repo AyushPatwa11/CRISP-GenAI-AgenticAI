@@ -1,4 +1,5 @@
-# 🚀 ApexAI Suite — 7 Complete Generative & Agentic AI Projects
+# 🤖 Generative & Agentic AI — 7-Day Project Portfolio Suite
+### *CRISP Bhopal Vocational Training Assignment | Venue: Rungta College of Engineering and Technology (RCET), Bhilai*
 
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://streamlit.io)
@@ -6,77 +7,141 @@
 [![ChromaDB](https://img.shields.io/badge/ChromaDB-0.5+-FF6F61?style=for-the-badge&logo=sqlite&logoColor=white)](https://trychroma.com)
 [![Groq API](https://img.shields.io/badge/Groq_API-Llama_3.3_70B-f36c00?style=for-the-badge)](https://groq.com)
 
-Welcome to the **ApexAI Suite**, a modern collection of 7 production-ready Generative & Agentic AI applications built for the **CRISP Assignment & Assessment Handbook** at **Rungta Engineering College, Bhilai** (Trainer: **Somil Jain**).
+---
+
+## 📌 Executive Summary & Academic Acknowledgements
+
+This repository contains the complete 7-day project portfolio developed during the **AIML Vocational Training Program** conducted by **CRISP BHOPAL** (*Centre for Research and Industrial Staff Performance*) at **Rungta College of Engineering and Technology (RCET), Bhilai**.
+
+* **Trainer & Technical Mentor**: **Somil Jain**
+* **Host Institution**: Rungta College of Engineering and Technology (RCET), Bhilai
+* **Organizing Body**: CRISP Bhopal (Centre for Research and Industrial Staff Performance)
+* **Program Subject**: AIML Vocational Training — Generative AI, RAG Systems, Agentic Workflows & Model Context Protocol (MCP)
 
 ---
 
-## 🌟 Modern Project Suite
+## 🌐 Live Deployed Applications Suite
 
-| # | Brand Name | Icon | Category | Core Tech Stack |
-|---|---|---|---|---|
-| 1 | **Promptify AI** | ⚡ | Prompt Engineering & Benchmarks | Streamlit, JSON Datasets, Groq/OpenAI |
-| 2 | **CareerVibe AI** | 💼 | Smart Resume & Career Match Engine | LangChain, Pydantic, Structured Prompting |
-| 3 | **KromaPDF AI** | 📚 | RAG PDF & Knowledge Search Engine | ChromaDB, HuggingFace Embeddings, PyPDF |
-| 4 | **CogniTrace AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
-| 5 | **OmniTool MCP** | 🔌 | Real-Time API & Protocol Bridge | Open-Meteo REST, DuckDuckGo, MCP Registry |
-| 6 | **FinMetrics AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
-| 7 | **ApexAI Nexus** | 🎓 | Master Portfolio & Viva Prep Center | Multi-page Portal, Interactive Viva Quiz |
+All 7 projects are fully deployed and accessible live on **Streamlit Community Cloud**:
+
+| Day | Project Brand Name | Core Focus & Architecture | 🚀 Live Deployed App URL | 💻 Local Run Command |
+| :---: | :--- | :--- | :--- | :--- |
+| **Day 1** | ⚡ **Promptify AI** | 20 Prompt Engineering Benchmarks (Zero/Few/CoT/Role) | [promptify-ai.streamlit.app](https://promptify-ai.streamlit.app/) | `streamlit run day1_prompt_engineering/app.py` |
+| **Day 2** | 💼 **CareerVibe AI** | LangChain Resume & Career Match Engine + Tuning | [careervibe-ai.streamlit.app](https://careervibe-ai.streamlit.app/) | `streamlit run day2_llm_app/app.py` |
+| **Day 3** | 📚 **KromaPDF AI** | Multi-PDF RAG Vector Search + ChromaDB + Citations | [kromapdf-ai.streamlit.app](https://kromapdf-ai.streamlit.app/) | `streamlit run day3_rag_system/app.py` |
+| **Day 4** | 🤖 **CogniTrace AI** | Autonomous ReAct Agent + Custom Memory & Visual Trace | [cognitrace-ai.streamlit.app](https://cognitrace-ai.streamlit.app/) | `streamlit run day4_agentic_ai/app.py` |
+| **Day 5** | 🔌 **OmniTool MCP** | Open-Meteo REST Weather, Live DDGS Search & MCP Bridge | [omnitool-mcp.streamlit.app](https://omnitool-mcp.streamlit.app/) | `streamlit run day5_tool_integration/app.py` |
+| **Day 6** | 📈 **FinMetrics AI** | Corporate Financial Ratio Math & SEC Risk Audit Engine | [finmetrics-ai.streamlit.app](https://finmetrics-ai.streamlit.app/) | `streamlit run day6_industry_solution/app.py` |
+| **Day 7** | 🎓 **ApexAI Nexus** | Master Capstone Portfolio & Interactive Viva Quiz | [apex-ai-nexus.streamlit.app](https://apex-ai-nexus.streamlit.app/) | `streamlit run day7_capstone/app.py` |
 
 ---
 
-## 📂 Repository Directory Structure
+## 📖 Comprehensive Assignment Breakdown (Days 1 – 7)
+
+### Day 1: ⚡ Promptify AI — Prompt Engineering & Benchmarks
+- **Objective**: Design, test, and benchmark 20 structured prompts across Zero-Shot, Few-Shot, Chain-of-Thought (CoT), and Role-Based System Prompting.
+- **Key Features**:
+  - Interactive side-by-side prompt testing lab with LLM temperature and top-p sliders.
+  - JSON Benchmark dataset storing before vs after prompt optimization pairs.
+  - Evaluation of hallucination reduction and token efficiency.
+
+### Day 2: 💼 CareerVibe AI — Smart Resume & Job Description Matcher
+- **Objective**: Build an LLM application using LangChain prompt templates and structured Pydantic output parsers.
+- **Key Features**:
+  - Accepts candidate resumes (text/PDF) and job descriptions.
+  - Computes Match Percentage, identifies missing technical skills, and recommends resume edits.
+  - Generates tailored corporate cover letters with downloadable reports.
+
+### Day 3: 📚 KromaPDF AI — RAG Vector Database & Citation Engine
+- **Objective**: Implement a Retrieval-Augmented Generation (RAG) system with document chunking, vector storage, and source verification.
+- **Key Features**:
+  - Multi-PDF document ingestion via `PyPDFLoader` and `RecursiveCharacterTextSplitter`.
+  - In-memory vector database powered by `ChromaDB` (`EphemeralClient`) for zero Windows file locking bugs.
+  - HuggingFace CPU mini-LM embeddings + exact page number citations.
+
+### Day 4: 🤖 CogniTrace AI — Autonomous ReAct Agent & Visual Trace
+- **Objective**: Construct an autonomous Agentic AI workflow using the ReAct (Reasoning + Acting) loop.
+- **Key Features**:
+  - Featured final response box with step metrics and execution summaries.
+  - Side-by-side visual execution trace card flow showing LLM reasoning vs tool outputs.
+  - 10+ pre-loaded sample goals dropdown library covering math, currency conversion, and text analytics.
+
+### Day 5: 🔌 OmniTool MCP — Real-Time API & MCP Protocol Bridge
+- **Objective**: Integrate external real-world REST APIs and Model Context Protocol (MCP) tool schemas.
+- **Key Features**:
+  - Real-time weather engine using Open-Meteo REST API (zero key required).
+  - Fast live web search powered by the updated `ddgs` library.
+  - Standardized MCP JSON schema registry for LLM tool calling interoperability.
+
+### Day 6: 📈 FinMetrics AI — Corporate Ratio & SEC Filing Risk Auditor
+- **Objective**: Build an enterprise-grade industry solution combining deterministic math with LLM risk audits.
+- **Key Features**:
+  - Automated calculation of Liquidity (Current Ratio), Profitability (Net Margin), and Solvency (Debt-to-Equity).
+  - Interactive Plotly financial trend bar charts.
+  - Automated SEC 10-K filing risk extraction and C-level executive summary generation.
+
+### Day 7: 🎓 ApexAI Nexus — Master Capstone & Assessment Portal
+- **Objective**: Create a master multi-page portfolio portal hosting all 7 projects with an interactive assessment module.
+- **Key Features**:
+  - Unified project launcher connecting all daily applications.
+  - Interactive Viva Voce Flashcard & Quiz module covering 10 core handbook questions with real-time scoring.
+  - Portfolio score breakdown: 100/100 marks submission ready.
+
+---
+
+## 📂 Repository Architecture & File Hierarchy
 
 ```text
 CRISP-GenAI-AgenticAI/
 │
-├── README.md                        # Primary Portfolio Documentation
-├── requirements.txt                 # Project dependencies
-├── .env.example                     # Environment key template
+├── README.md                        # Primary Master Portfolio Documentation
+├── requirements.txt                 # Dependencies (Streamlit, LangChain, ChromaDB, ddgs, Plotly)
+├── .env.example                     # API Key template
 │
-├── day1_prompt_engineering/         # Promptify AI: 20 Prompts & Evaluation Suite
-│   ├── app.py                       # Promptify AI Streamlit App
-│   ├── prompts_dataset.json         # 20 Benchmark Zero/Few/CoT/Role prompts
+├── day1_prompt_engineering/         # Promptify AI: 20 Prompts & Benchmarks
+│   ├── app.py                       # Streamlit UI
+│   ├── prompts_dataset.json         # 20 Benchmark Prompts
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day2_llm_app/                    # CareerVibe AI: Resume & Career Matcher
-│   ├── app.py                       # CareerVibe AI Streamlit App
-│   ├── templates.py                 # Structured prompt templates & output parsers
-│   ├── sample_data/                 # Sample resumes & job descriptions
+├── day2_llm_app/                    # CareerVibe AI: Resume Matcher
+│   ├── app.py                       # Streamlit UI
+│   ├── templates.py                 # LangChain Prompt Templates
+│   ├── sample_data/                 # Sample Resumes
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day3_rag_system/                 # KromaPDF AI: RAG Knowledge Engine
-│   ├── app.py                       # KromaPDF AI Streamlit App
-│   ├── rag_engine.py                # PyPDF Loader, Text Splitter, HuggingFace & ChromaDB
-│   ├── sample_docs/                 # Sample handbook document
+├── day3_rag_system/                 # KromaPDF AI: RAG System
+│   ├── app.py                       # Streamlit UI
+│   ├── rag_engine.py                # ChromaDB Ephemeral RAG Engine
+│   ├── sample_docs/                 # Sample PDFs
 │   ├── reflection_report.md
 │   └── README.md
 │
 ├── day4_agentic_ai/                 # CogniTrace AI: Autonomous ReAct Agent
-│   ├── app.py                       # CogniTrace AI Visual Trace Dashboard
-│   ├── agent.py                     # Custom ReAct agent (Memory, Planning, Tools)
-│   ├── tools.py                     # Calculator, Text Analyzer, Currency Converter
+│   ├── app.py                       # Streamlit Visual Trace UI
+│   ├── agent.py                     # Custom ReAct Agent
+│   ├── tools.py                     # Custom Python Tools
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day5_tool_integration/           # OmniTool MCP: REST & Tool Protocol Bridge
-│   ├── app.py                       # OmniTool MCP Interactive Hub
-│   ├── external_tools.py            # Open-Meteo Weather API, DuckDuckGo Search
-│   ├── mcp_bridge.py                # Model Context Protocol (MCP) tool registry
+├── day5_tool_integration/           # OmniTool MCP: REST & MCP Bridge
+│   ├── app.py                       # Streamlit UI
+│   ├── external_tools.py            # Open-Meteo REST & DDGS Search
+│   ├── mcp_bridge.py                # MCP Schema Registry
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day6_industry_solution/          # FinMetrics AI: Financial & SEC Risk Auditor
-│   ├── app.py                       # FinMetrics AI Dashboard
-│   ├── financial_engine.py          # Corporate ratio math & SEC risk extraction
-│   ├── sample_reports/              # Financial statement sample
+├── day6_industry_solution/          # FinMetrics AI: Financial Risk Auditor
+│   ├── app.py                       # Streamlit Executive Dashboard
+│   ├── financial_engine.py          # Ratio Engine & SEC Risk Auditor
+│   ├── sample_reports/              # Financial statement samples
 │   ├── reflection_report.md
 │   └── README.md
 │
-└── day7_capstone/                   # ApexAI Nexus: Master Portfolio & Viva Center
-    ├── app.py                       # ApexAI Nexus Multi-Page Master Portal
-    ├── viva_prep.py                 # Interactive Viva Voce Quiz module
+└── day7_capstone/                   # ApexAI Nexus: Master Portal & Viva Quiz
+    ├── app.py                       # Master Multi-Page Portal
+    ├── viva_prep.py                 # Interactive Viva Quiz Module
     ├── capstone_summary.md          # 100-mark assessment rubric breakdown
     ├── reflection_report.md
     └── README.md
@@ -84,7 +149,7 @@ CRISP-GenAI-AgenticAI/
 
 ---
 
-## ⚡ Quick Start & Setup
+## ⚡ Quick Start & Local Execution
 
 ### 1. Clone & Install Dependencies
 ```bash
@@ -96,29 +161,42 @@ pip install -r requirements.txt
 ```
 
 ### 2. Configure Environment Keys
-Create a `.env` file in the root directory based on `.env.example`:
+Create a `.env` file in the root directory:
 ```ini
 GROQ_API_KEY=your_groq_api_key_here
 OPENAI_API_KEY=your_openai_api_key_here
 ```
 
+### 3. Launch Daily Apps Locally
+```bash
+# Day 1: Promptify AI
+streamlit run day1_prompt_engineering/app.py --server.port 8501
+
+# Day 2: CareerVibe AI
+streamlit run day2_llm_app/app.py --server.port 8502
+
+# Day 3: KromaPDF AI
+streamlit run day3_rag_system/app.py --server.port 8504
+
+# Day 4: CogniTrace AI
+streamlit run day4_agentic_ai/app.py --server.port 8505
+
+# Day 5: OmniTool MCP
+streamlit run day5_tool_integration/app.py --server.port 8506
+
+# Day 6: FinMetrics AI
+streamlit run day6_industry_solution/app.py --server.port 8507
+
+# Day 7: ApexAI Nexus
+streamlit run day7_capstone/app.py --server.port 8508
+```
+
 ---
 
-## 🚀 Launching Applications
+## 📜 Credits & Academic Acknowledgements
 
-Launch any application suite directly via Streamlit:
+This portfolio was created as part of the **AIML Vocational Training Assignment** organized by **CRISP BHOPAL** (*Centre for Research and Industrial Staff Performance*) hosted at **Rungta College of Engineering and Technology (RCET), Bhilai**.
 
-| Project Brand Name | Launch Command | Features |
-|---|---|---|
-| ⚡ **Promptify AI** | `streamlit run day1_prompt_engineering/app.py` | 20 Prompt Engineering Showcase |
-| 💼 **CareerVibe AI** | `streamlit run day2_llm_app/app.py` | Smart Resume & Career Match Engine |
-| 📚 **KromaPDF AI** | `streamlit run day3_rag_system/app.py` | RAG PDF Knowledge Search |
-| 🤖 **CogniTrace AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
-| 🔌 **OmniTool MCP** | `streamlit run day5_tool_integration/app.py` | Real-Time API & MCP Protocol Bridge |
-| 📈 **FinMetrics AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |
-| 🎓 **ApexAI Nexus** | `streamlit run day7_capstone/app.py` | **Master Capstone & Viva Prep Center** |
-
----
-
-## 📜 License & Credits
-Built for **Rungta Engineering College, Bhilai** as part of the CRISP Generative & Agentic AI Bootcamp. Trainer: **Somil Jain**.
+* **Trainer & Mentor**: **Somil Jain**
+* **Institution Host**: Rungta College of Engineering and Technology (RCET), Bhilai
+* **Training Provider**: CRISP Bhopal
