@@ -18,66 +18,25 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom High-Aesthetic Sunset Amber & Purple Styling
-st.markdown("""
-<style>
-    html, body, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
-        overflow-y: auto !important;
-    }
-    [data-testid="stSidebarUserContent"] {
-        padding-bottom: 250px !important;
-        overflow-y: auto !important;
-    }
-    div[data-baseweb="popover"], div[data-baseweb="menu"], ul[data-baseweb="menu"] {
-        max-height: 260px !important;
-        overflow-y: auto !important;
-    }
-    .mcp-header {
-        background: linear-gradient(135deg, #304FFE 0%, #7C4DFF 50%, #FF9100 100%);
-        padding: 24px 30px;
-        border-radius: 16px;
-        color: white;
-        margin-bottom: 25px;
-        box-shadow: 0 8px 32px rgba(255, 145, 0, 0.25);
-    }
-    .mcp-header h1 { color: white !important; font-weight: 800; font-size: 2.2rem; margin: 0; }
-    .mcp-header p { color: rgba(255,255,255,0.9) !important; font-size: 1.05rem; margin-top: 6px; margin-bottom: 0; }
-    
-    .tool-box {
-        background: #F8F9FA;
-        border-radius: 12px;
-        padding: 18px 22px;
-        border: 1px solid #E0E0E0;
-        margin-bottom: 15px;
-    }
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="mcp-header">
-    <h1>🔌 OmniTool MCP Bridge</h1>
-    <p>Standardized Model Context Protocol (MCP) & Real-Time REST API Integration Platform</p>
-</div>
-""", unsafe_allow_html=True)
+st.title("🔌 OmniTool MCP — Real-Time API & Protocol Bridge")
+st.caption("Connect LLMs to Real-Time Web APIs, Live Weather Services, and Standardized MCP Tool Servers")
 
 # Initialize MCP Registry
 registry = MCPToolRegistry()
 schemas = registry.list_mcp_schemas()
 
 # Sidebar
-with st.sidebar:
-    st.image("https://img.icons8.com/isometric/96/plug.png", width=64)
-    st.header("⚙️ LLM & MCP Settings")
-    
-    provider = st.radio("Select Provider", ["Groq", "OpenAI"])
-    if provider == "Groq":
-        model_name = st.selectbox("Model", ["llama-3.3-70b-versatile", "mixtral-8x7b-32768"])
-        default_key = os.getenv("GROQ_API_KEY", "")
-    else:
-        model_name = st.selectbox("Model", ["gpt-4o-mini", "gpt-4o"])
-        default_key = os.getenv("OPENAI_API_KEY", "")
+st.sidebar.header("⚙️ LLM & MCP Settings")
 
-    api_key = st.text_input("API Key", value=default_key, type="password")
+provider = st.sidebar.radio("Select Provider", ["Groq", "OpenAI"])
+if provider == "Groq":
+    model_name = st.sidebar.selectbox("Model", ["llama-3.3-70b-versatile", "mixtral-8x7b-32768"])
+    default_key = os.getenv("GROQ_API_KEY", "")
+else:
+    model_name = st.sidebar.selectbox("Model", ["gpt-4o-mini", "gpt-4o"])
+    default_key = os.getenv("OPENAI_API_KEY", "")
+
+api_key = st.sidebar.text_input("API Key", value=default_key, type="password")
 
 # Tabs
 tab1, tab2, tab3 = st.tabs(["🧪 Direct Tool Testing", "📋 MCP Schema Inspector", "🤖 Agent Assistant Mode"])
@@ -87,26 +46,20 @@ with tab1:
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("<div class='tool-box'>", unsafe_allow_html=True)
         st.markdown("#### 🌦️ Real-Time Weather API (Open-Meteo)")
-        st.caption("Live REST API call fetching temperature and wind speed for any worldwide city.")
         city_input = st.text_input("City Name", value="Bhilai")
-        if st.button("Fetch Live Weather", type="primary"):
+        if st.button("Fetch Live Weather"):
             with st.spinner("Calling Open-Meteo REST API..."):
                 res = get_live_weather(city_input)
                 st.info(res)
-        st.markdown("</div>", unsafe_allow_html=True)
                 
     with col2:
-        st.markdown("<div class='tool-box'>", unsafe_allow_html=True)
         st.markdown("#### 🔍 Live Web Search (DuckDuckGo)")
-        st.caption("Live web search engine via DDGS with fast 4-second fallbacks.")
         search_query = st.text_input("Search Query", value="Latest breakthroughs in Agentic AI 2026")
-        if st.button("Execute Web Search", type="primary"):
+        if st.button("Execute Web Search"):
             with st.spinner("Searching live web via DDGS..."):
                 res = search_web_duckduckgo(search_query)
                 st.markdown(res)
-        st.markdown("</div>", unsafe_allow_html=True)
 
 with tab2:
     st.markdown("### 📋 Model Context Protocol (MCP) JSON Schemas")
@@ -133,7 +86,7 @@ with tab3:
         value=preset_query if preset_query else "What is the current weather in Bhilai and search for recent news about AI agents."
     )
     
-    if st.button("🚀 Process Instruction via Tool Engine", type="primary", use_container_width=True):
+    if st.button("🚀 Process Instruction via Tool Engine", type="primary"):
         if not api_key.strip():
             st.error("Please provide a valid API key in the sidebar.")
         elif not user_prompt.strip():
