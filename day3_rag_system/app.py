@@ -15,6 +15,9 @@ st.set_page_config(
 # Custom High-Aesthetic Deep Indigo Styling
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .rag-header {
         background: linear-gradient(135deg, #1A237E 0%, #3F51B5 50%, #00BCD4 100%);
         padding: 24px 30px;

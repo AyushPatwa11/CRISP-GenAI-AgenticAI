@@ -15,6 +15,9 @@ st.set_page_config(
 # Custom High-Aesthetic Agent Command Center Styling
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .agent-header {
         background: linear-gradient(135deg, #121212 0%, #1E1E2C 50%, #00E5FF 100%);
         padding: 24px 30px;

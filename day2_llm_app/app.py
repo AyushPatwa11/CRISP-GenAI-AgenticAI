@@ -16,6 +16,9 @@ st.set_page_config(
 # Custom High-Aesthetic Corporate HR CSS
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .header-box {
         background: linear-gradient(135deg, #1A237E 0%, #303F9F 50%, #00C853 100%);
         padding: 24px 30px;

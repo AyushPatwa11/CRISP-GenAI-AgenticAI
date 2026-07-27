@@ -11,6 +11,9 @@ st.set_page_config(
 # Custom High-Aesthetic Royal Gold & Midnight Styling
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .apex-header {
         background: linear-gradient(135deg, #111827 0%, #1F2937 50%, #D97706 100%);
         padding: 26px 32px;

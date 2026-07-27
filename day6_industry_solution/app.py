@@ -17,6 +17,9 @@ st.set_page_config(
 # Custom High-Aesthetic Corporate Financial Styling
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .fin-header {
         background: linear-gradient(135deg, #004D40 0%, #00C853 50%, #FFD600 100%);
         padding: 24px 30px;

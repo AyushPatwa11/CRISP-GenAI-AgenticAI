@@ -21,6 +21,9 @@ st.set_page_config(
 # Custom High-Aesthetic Sunset Amber & Purple Styling
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .mcp-header {
         background: linear-gradient(135deg, #304FFE 0%, #7C4DFF 50%, #FF9100 100%);
         padding: 24px 30px;

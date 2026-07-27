@@ -15,6 +15,9 @@ st.set_page_config(
 # Custom High-Aesthetic CSS
 st.markdown("""
 <style>
+    html, body, [data-testid="stAppViewContainer"] {
+        overflow-y: auto !important;
+    }
     .main-header {
         background: linear-gradient(135deg, #651FFF 0%, #7C4DFF 50%, #00E5FF 100%);
         padding: 24px 30px;
