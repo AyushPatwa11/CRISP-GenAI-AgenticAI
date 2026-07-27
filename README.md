@@ -20,7 +20,7 @@ Welcome to the **ApexAI Suite**, a modern collection of 7 production-ready Gener
 | 4 | **CogniTrace AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
 | 5 | **OmniTool MCP** | 🔌 | Real-Time API & Protocol Bridge | Open-Meteo REST, DuckDuckGo, MCP Registry |
 | 6 | **FinPulse AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
-| 7 | **ApexAI Hub** | 🎓 | Master Portfolio & Viva Prep Center | Multi-page Portal, Interactive Viva Quiz |
+| 7 | **ApexAI Nexus** | 🎓 | Master Portfolio & Viva Prep Center | Multi-page Portal, Interactive Viva Quiz |
 
 ---
 
@@ -74,8 +74,8 @@ CRISP-GenAI-AgenticAI/
 │   ├── reflection_report.md
 │   └── README.md
 │
-└── day7_capstone/                   # ApexAI Hub: Master Portfolio & Viva Center
-    ├── app.py                       # ApexAI Hub Multi-Page Master Portal
+└── day7_capstone/                   # ApexAI Nexus: Master Portfolio & Viva Center
+    ├── app.py                       # ApexAI Nexus Multi-Page Master Portal
     ├── viva_prep.py                 # Interactive Viva Voce Quiz module
     ├── capstone_summary.md          # 100-mark assessment rubric breakdown
     ├── reflection_report.md
@@ -116,7 +116,7 @@ Launch any application suite directly via Streamlit:
 | 🤖 **CogniTrace AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
 | 🔌 **OmniTool MCP** | `streamlit run day5_tool_integration/app.py` | Real-Time API & MCP Protocol Bridge |
 | 📈 **FinPulse AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |
-| 🎓 **ApexAI Hub** | `streamlit run day7_capstone/app.py` | **Master Capstone & Viva Prep Center** |
+| 🎓 **ApexAI Nexus** | `streamlit run day7_capstone/app.py` | **Master Capstone & Viva Prep Center** |
 
 ---
 

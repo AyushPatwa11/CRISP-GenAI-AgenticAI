@@ -3,12 +3,12 @@ import os
 from viva_prep import VIVA_QUESTIONS
 
 st.set_page_config(
-    page_title="ApexAI Hub - Portfolio & Assessment Portal",
+    page_title="ApexAI Nexus - Portfolio & Assessment Portal",
     page_icon="🎓",
     layout="wide"
 )
 
-st.title("🎓 ApexAI Hub — Master Portfolio & Assessment Portal")
+st.title("🎓 ApexAI Nexus — Master Portfolio & Assessment Portal")
 st.caption("Rungta Engineering College, Bhilai — 7 Complete Generative & Agentic AI Projects")
 
 # Navigation Tabs
@@ -41,7 +41,7 @@ with tab_overview:
         {"name": "CogniTrace AI", "icon": "🤖", "desc": "Agentic AI with tool calling, working memory, and live visual execution traces."},
         {"name": "OmniTool MCP", "icon": "🔌", "desc": "Real-time weather API, web search, and Model Context Protocol (MCP) tool registry."},
         {"name": "FinPulse AI", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
-        {"name": "ApexAI Hub", "icon": "🎓", "desc": "Unified portal hosting all 7 projects with an interactive Viva Voce quiz module."}
+        {"name": "ApexAI Nexus", "icon": "🎓", "desc": "Unified portal hosting all 7 projects with an interactive Viva Voce quiz module."}
     ]
 
     for p in projects_info:
