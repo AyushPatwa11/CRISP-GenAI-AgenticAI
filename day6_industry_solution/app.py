@@ -9,12 +9,12 @@ from financial_engine import FinancialAnalysisEngine
 load_dotenv()
 
 st.set_page_config(
-    page_title="FinPulse AI - Financial & Risk Audit Engine",
+    page_title="FinMetrics AI - Financial & Risk Audit Engine",
     page_icon="📈",
     layout="wide"
 )
 
-st.title("📈 FinPulse AI — Corporate Financial & Risk Audit Engine")
+st.title("📈 FinMetrics AI — Corporate Financial & Risk Audit Engine")
 st.caption("Tailored AI Solution for Finance: Combining Automated Ratio Calculation, Executive Summarization & Risk Audit")
 
 # Sidebar Configuration

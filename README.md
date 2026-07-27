@@ -19,7 +19,7 @@ Welcome to the **ApexAI Suite**, a modern collection of 7 production-ready Gener
 | 3 | **KromaPDF AI** | 📚 | RAG PDF & Knowledge Search Engine | ChromaDB, HuggingFace Embeddings, PyPDF |
 | 4 | **CogniTrace AI** | 🤖 | Autonomous ReAct Agent & Visual Trace | ReAct Framework, Memory, Custom Tools |
 | 5 | **OmniTool MCP** | 🔌 | Real-Time API & Protocol Bridge | Open-Meteo REST, DuckDuckGo, MCP Registry |
-| 6 | **FinPulse AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
+| 6 | **FinMetrics AI** | 📈 | Financial & SEC Filing Risk Auditor | Plotly Charts, Financial Math, SEC Audits |
 | 7 | **ApexAI Nexus** | 🎓 | Master Portfolio & Viva Prep Center | Multi-page Portal, Interactive Viva Quiz |
 
 ---
@@ -67,8 +67,8 @@ CRISP-GenAI-AgenticAI/
 │   ├── reflection_report.md
 │   └── README.md
 │
-├── day6_industry_solution/          # FinPulse AI: Financial & SEC Risk Auditor
-│   ├── app.py                       # FinPulse AI Dashboard
+├── day6_industry_solution/          # FinMetrics AI: Financial & SEC Risk Auditor
+│   ├── app.py                       # FinMetrics AI Dashboard
 │   ├── financial_engine.py          # Corporate ratio math & SEC risk extraction
 │   ├── sample_reports/              # Financial statement sample
 │   ├── reflection_report.md
@@ -115,7 +115,7 @@ Launch any application suite directly via Streamlit:
 | 📚 **KromaPDF AI** | `streamlit run day3_rag_system/app.py` | RAG PDF Knowledge Search |
 | 🤖 **CogniTrace AI** | `streamlit run day4_agentic_ai/app.py` | Autonomous ReAct Agent Visual Trace |
 | 🔌 **OmniTool MCP** | `streamlit run day5_tool_integration/app.py` | Real-Time API & MCP Protocol Bridge |
-| 📈 **FinPulse AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |
+| 📈 **FinMetrics AI** | `streamlit run day6_industry_solution/app.py` | Financial & SEC Filing Risk Auditor |
 | 🎓 **ApexAI Nexus** | `streamlit run day7_capstone/app.py` | **Master Capstone & Viva Prep Center** |
 
 ---

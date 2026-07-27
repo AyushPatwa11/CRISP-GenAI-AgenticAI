@@ -40,7 +40,7 @@ with tab_overview:
         {"name": "KromaPDF AI", "icon": "📚", "desc": "Multi-PDF QA chatbot with HuggingFace embeddings, ChromaDB, and source citations."},
         {"name": "CogniTrace AI", "icon": "🤖", "desc": "Agentic AI with tool calling, working memory, and live visual execution traces."},
         {"name": "OmniTool MCP", "icon": "🔌", "desc": "Real-time weather API, web search, and Model Context Protocol (MCP) tool registry."},
-        {"name": "FinPulse AI", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
+        {"name": "FinMetrics AI", "icon": "📈", "desc": "Domain-specific AI solution combining corporate ratio calculations with SEC filing risk auditing."},
         {"name": "ApexAI Nexus", "icon": "🎓", "desc": "Unified portal hosting all 7 projects with an interactive Viva Voce quiz module."}
     ]
 
