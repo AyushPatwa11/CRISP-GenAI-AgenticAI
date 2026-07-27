@@ -15,7 +15,11 @@ st.set_page_config(
 # Custom High-Aesthetic Agent Command Center Styling
 st.markdown("""
 <style>
-    html, body, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], [data-testid="stSidebarContent"], [data-testid="stSidebarUserContent"] {
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stSidebar"], [data-testid="stSidebarContent"] {
+        overflow-y: auto !important;
+    }
+    [data-testid="stSidebarUserContent"] {
+        padding-bottom: 250px !important;
         overflow-y: auto !important;
     }
     div[data-baseweb="popover"], div[data-baseweb="menu"], ul[data-baseweb="menu"] {
